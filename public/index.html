@@ -44,10 +44,13 @@ small{color:#8b8fa3}
   <video id="vp" controls playsinline></video>
 </div>
 <div>
-  <div class="c"><h2>📷 ছবি</h2>
-    <input type="file" id="im" accept="image/*" multiple>
-    <small>একাধিক ছবি দিলে সময় ভাগ হয়ে একটার পর একটা আসবে।</small>
+  <div class="c"><button id="pc" class="p" style="margin:0">📋 ফর্ম কপি করুন</button></div>
+  <div class="c"><h2>📷 ছবি ও ভিডিও ক্লিপ</h2>
+    <input type="file" id="im" accept="image/*,video/*" multiple>
+    <small>ছবি আর ভিডিও ক্লিপ মিলিয়ে দেওয়া যায়। একাধিক হলে সময় ভাগ হয়ে একটার পর একটা আসবে (ভিডিওর নিজের শব্দ বাদ যাবে, ছোট ক্লিপ লুপ হবে)।</small>
     <div id="th"></div>
+    <label><input type="checkbox" id="vs"> ভিডিও ক্লিপের নিজের শব্দ রাখুন</label>
+    <button id="vd" style="width:100%;margin-top:6px">⏱ ভিডিও ক্লিপের দৈর্ঘ্য অনুযায়ী সময় সেট করুন</button>
   </div>
   <div class="c"><h2>✍ লেখা</h2>
     <textarea id="tx" placeholder="প্রতিটি লাইন আলাদা লিখুন। কোনো লাইনের শুরুতে * দিলে সেটা হাইলাইট রঙে আসবে।">ঘরের অভাব হলে-
@@ -61,12 +64,14 @@ small{color:#8b8fa3}
   </div>
   <div class="c"><h2>🎨 স্টাইল</h2>
     <label for="ly">ডিজাইন</label><select id="ly"></select>
+    <div id="cinf" style="display:none;border:1px dashed #ffd27a;border-radius:10px;padding:0 10px 10px;margin-top:8px"><small style="display:block;margin-top:8px">🎬 সিনেমা পট্টি বেছেছেন — নিচের ঘরে লিখলে উপরে/নিচের কালো পট্টিতে লেখা আসবে</small><label for="tt">🎬 উপরের পট্টির লেখা</label><textarea id="tt" style="min-height:60px" placeholder="যেমন: গল্পের নাম"></textarea><label for="tb">🎬 নিচের পট্টির লেখা</label><textarea id="tb" style="min-height:60px" placeholder="যেমন: লেখকের নাম / পেজের নাম"></textarea></div>
     <label for="ft">লেখার ফন্ট</label>
     <select id="ft"><option value="hind">Hind Siliguri</option><option value="serif">Noto Serif Bengali</option><option value="tiro">Tiro Bangla</option><option value="anek">Anek Bangla</option><option value="galada">Galada (হাতের লেখা)</option></select>
-    <label for="ts">লেখার স্টাইল</label><select id="ts"><option value="plain">সাধারণ</option><option value="gold">সোনালী গ্রেডিয়েন্ট</option><option value="glow">নরম গ্লো</option><option value="outline">কালো আউটলাইন</option><option value="marker">মার্কার হাইলাইট</option></select>
+    <label for="ts">লেখার স্টাইল</label><select id="ts"><option value="plain">সাধারণ</option><option value="gold">সোনালী গ্রেডিয়েন্ট</option><option value="glow">নরম গ্লো</option><option value="outline">কালো আউটলাইন</option><option value="marker">মার্কার হাইলাইট</option><option value="hlout">হাইলাইট লাইনে আউটলাইন</option></select>
     <div class="r"><div><label for="cc">কার্ডের রঙ</label><input type="color" id="cc"></div><div><label for="tc">লেখার রঙ</label><input type="color" id="tc"></div><div><label for="hc">হাইলাইট</label><input type="color" id="hc"></div></div>
     <div class="r"><div><label for="ar">মাপ</label><select id="ar"><option value="1.7778">৯:১৬ রিলস</option><option value="1.25">৪:৫</option><option value="1">১:১</option></select></div>
     <div><label for="qs">কোয়ালিটি</label><select id="qs"><option value="720">HD ৭২০</option><option value="1080">Full HD ১০৮০</option></select></div></div>
+    <label for="fm">ভিডিও ফরম্যাট</label><select id="fm"><option value="auto">স্বয়ংক্রিয় (MP4, না হলে WebM)</option><option value="webm">WebM — ফোনে বেশি নির্ভরযোগ্য</option><option value="mp4">MP4</option></select>
     <label for="pf">ছবির কালার গ্রেড</label><select id="pf"><option value="">স্বাভাবিক</option><option value="grayscale(1) contrast(1.1)">সাদা-কালো</option><option value="sepia(.35) saturate(1.2) contrast(1.05)">উষ্ণ সিনেমাটিক</option><option value="hue-rotate(-12deg) saturate(.9) brightness(.95)">ঠান্ডা নীলচে</option><option value="saturate(1.4) contrast(1.1)">উজ্জ্বল ভিভিড</option></select>
     <label for="fx">ছবির ওপর ইফেক্ট</label><select id="fx"><option value="none">নেই</option><option value="dust">সোনালী ধুলোকণা</option><option value="rain">বৃষ্টি</option><option value="petal">ঝরা পাপড়ি</option><option value="snow">তুষার / বোকে</option></select>
     <label><input type="checkbox" id="gl" checked> ফিল্ম গ্রেইন (সিনেমার মতো দানা)</label>
@@ -87,7 +92,7 @@ small{color:#8b8fa3}
 </div>
 </main>
 <script>
-const $=s=>document.querySelector(s),cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+let GP=null;const $=s=>document.querySelector(s),cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
 const FT={hind:['Hind Siliguri',600],serif:['Noto Serif Bengali',700],tiro:['Tiro Bangla',400],anek:['Anek Bangla',700],galada:['Galada',400]};
 const LY={
  red:{n:'লাল দানাদার কার্ড (উপরে) + ছবি',pos:'top',ch:.5,ph:.8,card:'#7a1b1b',text:'#ffffff',hl:'#ffd7a8',gr:.16,ft:'hind',al:'left'},
@@ -100,18 +105,22 @@ const LY={
  wine:{n:'🍷 গোলাপি-ওয়াইন গ্রেডিয়েন্ট + ছবি',pos:'top',ch:.5,ph:.8,card:'#4a0f2b',c2:'#b83a68',text:'#ffffff',hl:'#ffd1dc',gr:.06,ft:'hind',al:'left',qm:1,ts:'plain'},
  gold:{n:'👑 কালো-সোনালী কার্ড (নিচে) + ছবি',pos:'bottom',ch:.55,ph:.7,card:'#0a0a0a',c2:'#201a10',text:'#f4d58d',hl:'#ffffff',gr:.05,ft:'serif',al:'center',qm:1,ts:'gold'},
  sepia:{n:'📜 পুরনো চিঠি (সেপিয়া) + ছবি',pos:'top',ch:.42,ph:.6,card:'#e8d5b0',c2:'#d3b887',text:'#3a2514',hl:'#9b2d20',gr:.1,ft:'tiro',al:'left',ts:'plain'},
- ocean:{n:'🌊 সবুজ-নীল গ্রেডিয়েন্ট + ছবি',pos:'top',ch:.46,ph:.78,card:'#05323b',c2:'#0e7c86',text:'#ffffff',hl:'#ffe08a',gr:.05,ft:'anek',al:'left',ts:'plain'}};
+ ocean:{n:'🌊 সবুজ-নীল গ্রেডিয়েন্ট + ছবি',pos:'top',ch:.46,ph:.78,card:'#05323b',c2:'#0e7c86',text:'#ffffff',hl:'#ffe08a',gr:.05,ft:'anek',al:'left',ts:'plain'},
+ fade:{n:'⚪ সাদা ফেড + ছবি/ভিডিও (রিলস স্টাইল)',pos:'over',ch:0,ph:1.25,card:'#000000',text:'#1a1a1a',hl:'#ffd400',gr:0,ft:'anek',al:'center',ts:'hlout',fade:1},
+ cinema:{n:'🎬 সিনেমা পট্টি — উপরে ও নিচে লেখার ঘর',pos:'bars',ch:0,ph:.62,card:'#000000',text:'#ffffff',hl:'#ffd166',gr:0,ft:'serif',al:'center',ts:'plain',bars:1}};
+function gp(){return GP||(GP=g.createPattern(gn,'repeat'))}
 const S={imgs:[],music:false,t:0,playing:false,rec:false},cv=$('#cv'),g=cv.getContext('2d');
 let DUR=10,W=720,H=1280,recorder=null,actx,au,gain,dest,cust=0;
 Object.entries(LY).forEach(([k,v])=>$('#ly').add(new Option(v.n,k)));
 const gn=document.createElement('canvas');gn.width=gn.height=200;
 {const q=gn.getContext('2d'),d=q.createImageData(200,200);for(let i=0;i<d.data.length;i+=4){const v=Math.random()*255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=255}q.putImageData(d,0,0)}
-function applyLayout(){const L=LY[$('#ly').value];cust=0;$('#ts').value=L.ts||'plain';$('#cc').value=L.card;$('#tc').value=L.text;$('#hc').value=L.hl;$('#ft').value=L.ft}
+function showF(){$('#cinf').style.display=LY[$('#ly').value].bars?'block':'none'}
+function applyLayout(){const L=LY[$('#ly').value];showF();cust=0;$('#ts').value=L.ts||'plain';$('#cc').value=L.card;$('#tc').value=L.text;$('#hc').value=L.hl;$('#ft').value=L.ft}
 function setSize(){W=+$('#qs').value;H=Math.round(W*$('#ar').value);cv.width=W;cv.height=H}
-$('#ly').onchange=applyLayout;$('#ar').onchange=$('#qs').onchange=setSize;$('#cc').addEventListener('input',()=>cust=1);
-const IDS=['ly','ft','cc','tc','hc','ar','qs','pf','fx','gl','fo','an','ts','dur','au','wm','tx'];let rest=0;
+$('#ly').onchange=()=>{applyLayout();if(LY[$('#ly').value].bars)$('#cinf').scrollIntoView({block:'nearest',behavior:'smooth'})};$('#ar').onchange=$('#qs').onchange=setSize;$('#cc').addEventListener('input',()=>cust=1);
+const IDS=['ly','ft','cc','tc','hc','ar','qs','pf','fx','gl','fo','an','ts','fm','tt','tb','dur','au','wm','tx'];let rest=0;
 try{const o=JSON.parse(localStorage.getItem('rm_cfg')||'null');if(o){IDS.forEach(i=>{const e=$('#'+i);if(e&&i in o){if(e.type=='checkbox')e.checked=o[i];else e.value=o[i]}});cust=+o.cust||0;rest=1}}catch(e){}
-if(!rest)applyLayout();setSize();DUR=+$('#dur').value;$('#dv').textContent=DUR;
+if(!rest)applyLayout();showF();setSize();DUR=+$('#dur').value;$('#dv').textContent=DUR;
 const sv0=()=>{const o={cust};IDS.forEach(i=>{const e=$('#'+i);o[i]=e.type=='checkbox'?e.checked:e.value});try{localStorage.setItem('rm_cfg',JSON.stringify(o))}catch(e){}};
 document.addEventListener('input',sv0);document.addEventListener('change',sv0);
 $('#dur').oninput=()=>{DUR=+$('#dur').value;$('#dv').textContent=DUR;S.t=Math.min(S.t,DUR)};
@@ -119,9 +128,10 @@ document.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{$('#dur').value=
 Promise.all(Object.values(FT).map(([f,w])=>document.fonts.load(`${w} 40px "${f}"`,'অআকখ').catch(()=>0)));
 
 /* images */
-const loadImg=f=>new Promise(r=>{const im=new Image();im.onload=()=>r(im);im.onerror=()=>r(null);im.src=URL.createObjectURL(f)});
+const loadImg=f=>new Promise(r=>{if(f.type.startsWith('video/')){const v=document.createElement('video');v.muted=true;v.loop=true;v.playsInline=true;v.preload='auto';v.onloadeddata=()=>r(v);v.onerror=()=>r(null);v.src=URL.createObjectURL(f);return}const im=new Image();im.onload=()=>r(im);im.onerror=()=>r(null);im.src=URL.createObjectURL(f)});
+$('#vd').onclick=()=>{const vs=S.imgs.filter(isV);if(!vs.length){$('#st').textContent='আগে ভিডিও ক্লিপ যোগ করুন';return}const s=Math.round(vs.reduce((a,v)=>a+(v.duration||0),0)+(S.imgs.length-vs.length)*3);$('#dur').value=cl(s,2,60);$('#dur').oninput();$('#st').textContent='✔ সময় সেট: '+DUR+' সেকেন্ড'};
 $('#im').onchange=async e=>{const a=await Promise.all([...e.target.files].map(loadImg));a.filter(Boolean).forEach(i=>S.imgs.push(i));e.target.value='';thumbs()};
-function thumbs(){const b=$('#th');b.textContent='';S.imgs.forEach((im,i)=>{const d=document.createElement('div');d.className='t';d.style.backgroundImage=`url(${im.src})`;const x=document.createElement('button');x.textContent='✖';x.setAttribute('aria-label','ছবি বাদ দিন');x.onclick=()=>{S.imgs.splice(i,1);thumbs()};d.append(x);b.append(d)})}
+function thumbs(){const b=$('#th');b.textContent='';S.imgs.forEach((im,i)=>{const d=document.createElement('div');d.className='t';if(im.tagName=='VIDEO'){const v=document.createElement('video');v.src=im.src;v.muted=true;v.style.cssText='width:100%;height:100%;object-fit:cover;border-radius:8px';d.append(v)}else d.style.backgroundImage=`url(${im.src})`;const x=document.createElement('button');x.textContent='✖';x.setAttribute('aria-label','ছবি বাদ দিন');x.onclick=()=>{S.imgs.splice(i,1);thumbs()};d.append(x);b.append(d)})}
 
 /* saved texts */
 const QK='rm_quotes',qget=()=>{try{return JSON.parse(localStorage.getItem(QK)||'[]')}catch(e){return[]}};
@@ -129,14 +139,14 @@ function qshow(){const b=$('#ql');b.textContent='';qget().forEach((q,i)=>{const 
 $('#sv').onclick=()=>{const tx=$('#tx').value.trim();if(!tx)return;const l=qget().filter(q=>q.tx!=tx);l.unshift({tx,au:$('#au').value});try{localStorage.setItem(QK,JSON.stringify(l.slice(0,60)))}catch(e){}qshow();$('#st').textContent='✔ লেখা সেভ হয়েছে — নিচের তালিকা থেকে আবার নিতে পারবেন'};qshow();
 
 /* music */
-$('#mu').onchange=e=>{const f=e.target.files[0];if(!f)return;if(!au){au=new Audio();au.loop=true;actx=new (window.AudioContext||window.webkitAudioContext)();const s=actx.createMediaElementSource(au);gain=actx.createGain();dest=actx.createMediaStreamDestination();s.connect(gain);gain.connect(actx.destination);gain.connect(dest)}au.src=URL.createObjectURL(f);S.music=true;$('#st').textContent='🎵 মিউজিক যোগ হয়েছে'};
+$('#mu').onchange=e=>{const f=e.target.files[0];if(!f)return;if(!au){au=new Audio();au.loop=true;if(!actx){actx=new (window.AudioContext||window.webkitAudioContext)();dest=actx.createMediaStreamDestination()}const s=actx.createMediaElementSource(au);gain=actx.createGain();s.connect(gain);gain.connect(actx.destination);gain.connect(dest)}au.src=URL.createObjectURL(f);S.music=true;$('#st').textContent='🎵 মিউজিক যোগ হয়েছে'};
 const sync=()=>{if(!S.music)return;actx.resume();au.currentTime=(+$('#ms').value||0)+S.t;au.play().catch(()=>{})};
 
 /* text layout */
-const parse=()=>$('#tx').value.split('\n').map(s=>s.trim()).filter(Boolean).map(s=>s[0]=='*'?{t:s.replace(/^\*+\s*/,''),h:1}:{t:s,h:0});
-let lc={k:'',v:null};
-function lay(lines,fam,fw,maxW,maxH,s0){const k=JSON.stringify([lines,fam,fw,maxW|0,maxH|0,s0|0]);if(lc.k==k)return lc.v;let v;for(let size=Math.round(s0);size>=14;size-=2){const rows=[];lines.forEach(L=>{g.font=`${L.h?700:fw} ${size}px "${fam}"`;const sp=g.measureText(' ').width;let cur=[],cw=0;L.t.split(/\s+/).filter(Boolean).forEach(w=>{const m=g.measureText(w).width,x=cur.length?cw+sp:0;if(cur.length&&x+m>maxW){rows.push({w:cw,h:L.h,words:cur});cur=[{t:w,m,x:0}];cw=m}else{cur.push({t:w,m,x});cw=x+m}});if(cur.length)rows.push({w:cw,h:L.h,words:cur})});v={rows,size,lh:size*1.5};if(rows.length*size*1.5<=maxH)break}lc={k,v};return v}
-function drawText(t,x,y,w,h,al,shadow){const lines=parse();if(!lines.length)return;const[fam,fw]=FT[$('#ft').value],col=$('#tc').value,hl=$('#hc').value,ts=$('#ts').value,q=lay(lines,fam,fw,w,h,W*.075),mode=$('#an').value,nR=q.rows.length;let nW=0,nC=0;q.rows.forEach(r=>r.words.forEach(o=>{o.c0=nC;nC+=o.t.length;nW++}));
+const parse=(id='#tx')=>$(id).value.split('\n').map(s=>s.trim()).filter(Boolean).map(s=>s[0]=='*'?{t:s.replace(/^\*+\s*/,''),h:1}:{t:s,h:0});
+const lcm=new Map();
+function lay(lines,fam,fw,maxW,maxH,s0){const k=JSON.stringify([lines,fam,fw,maxW|0,maxH|0,s0|0]);if(lcm.has(k))return lcm.get(k);let v;for(let size=Math.round(s0);size>=14;size-=2){const rows=[];lines.forEach(L=>{g.font=`${L.h?700:fw} ${size}px "${fam}"`;const sp=g.measureText(' ').width;let cur=[],cw=0;L.t.split(/\s+/).filter(Boolean).forEach(w=>{const m=g.measureText(w).width,x=cur.length?cw+sp:0;if(cur.length&&x+m>maxW){rows.push({w:cw,h:L.h,words:cur});cur=[{t:w,m,x:0}];cw=m}else{cur.push({t:w,m,x});cw=x+m}});if(cur.length)rows.push({w:cw,h:L.h,words:cur})});v={rows,size,lh:size*1.5};if(rows.length*size*1.5<=maxH)break}if(lcm.size>30)lcm.clear();lcm.set(k,v);return v}
+function drawText(t,x,y,w,h,al,shadow,src){const lines=parse(src);if(!lines.length)return;const[fam,fw]=FT[$('#ft').value],col=$('#tc').value,hl=$('#hc').value,ts=$('#ts').value,q=lay(lines,fam,fw,w,h,W*.075),mode=$('#an').value,nR=q.rows.length;let nW=0,nC=0;q.rows.forEach(r=>r.words.forEach(o=>{o.c0=nC;nC+=o.t.length;nW++}));
  const RD=Math.min(DUR*.6,3.5),p=mode=='none'?1:cl((t-.3)/RD),top=y+(h-nR*q.lh)/2;let gi=0;g.save();g.textBaseline='middle';
  if(shadow){g.shadowColor='rgba(0,0,0,.75)';g.shadowBlur=q.size*.25}
  q.rows.forEach((r,ri)=>{const bx=al=='left'?x:al=='center'?x+(w-r.w)/2:x+w-r.w;g.font=`${r.h?700:fw} ${q.size}px "${fam}"`;g.fillStyle=r.h?hl:col;
@@ -149,6 +159,7 @@ function put(s,x,y,m,h,z,col,hl,ts){g.save();let f=h?hl:col;
  if(ts=='marker'){g.fillStyle=h?'#e11d48':hl;g.fillRect(x-z*.14,y-z*.56,m+z*.28,z*1.1);f=h?'#fff':col}
  else if(ts=='gold'&&!h){const k=g.createLinearGradient(0,y-z/2,0,y+z/2);k.addColorStop(0,'#fff3c4');k.addColorStop(.55,'#f0c15a');k.addColorStop(1,'#b8862b');f=k;g.shadowColor='rgba(0,0,0,.45)';g.shadowBlur=z*.1}
  else if(ts=='glow'){g.shadowColor=h?hl:col;g.shadowBlur=z*.45}
+ else if(ts=='hlout'){if(h){g.lineJoin='round';g.lineWidth=z*.17;g.strokeStyle='#3b2a00';g.strokeText(s,x,y)}}
  else if(ts=='outline'){g.lineJoin='round';g.lineWidth=z*.14;g.strokeStyle='rgba(0,0,0,.85)';g.strokeText(s,x,y)}
  g.fillStyle=f;g.fillText(s,x,y);g.restore()}
 const P=Array.from({length:70},()=>({x:Math.random(),y:Math.random(),s:.4+Math.random(),v:.3+Math.random()*.7,p:Math.random()*6}));
@@ -156,19 +167,24 @@ function fx(t,x,y,w,h){const m=$('#fx').value;if(m=='none')return;g.save();g.beg
  if(m=='rain'){g.strokeStyle='rgba(200,220,255,.35)';g.lineWidth=Math.max(1,W/700);g.beginPath();P.forEach(o=>{const yy=((o.y+t*o.v*1.4)%1)*h,xx=(((o.x-t*.05)%1)+1)%1*w;g.moveTo(x+xx,y+yy);g.lineTo(x+xx-h*.012,y+yy+h*.05*o.s)});g.stroke()}
  else P.forEach(o=>{const d=m=='dust'?-1:1,yy=(((o.y+d*t*o.v*.05)%1)+1)%1*h,xx=(((o.x+Math.sin(t*.6+o.p)*.03)%1)+1)%1*w,r=W*.004*o.s*(m=='petal'?2.2:1);g.globalAlpha=.25+.45*Math.abs(Math.sin(t+o.p));g.fillStyle=m=='petal'?'#ffb3c7':m=='dust'?'#ffe9b0':'#fff';g.beginPath();if(m=='petal')g.ellipse(x+xx,y+yy,r*1.6,r,t+o.p,0,7);else g.arc(x+xx,y+yy,r,0,7);g.fill()});g.restore()}
 /* photo */
-function dImg(im,x,y,w,h,z,a){const s=Math.max(w/im.width,h/im.height)*z;g.globalAlpha=a;g.drawImage(im,x+(w-im.width*s)/2,y+(h-im.height*s)/2,im.width*s,im.height*s);g.globalAlpha=1}
+const isV=m=>m.tagName=='VIDEO';
+function dImg(im,x,y,w,h,z,a){const iw=im.videoWidth||im.width,ih=im.videoHeight||im.height;if(!iw)return;const s=Math.max(w/iw,h/ih)*z;g.globalAlpha=a;g.drawImage(im,x+(w-iw*s)/2,y+(h-ih*s)/2,iw*s,ih*s);g.globalAlpha=1}
+function vsnd(v){if(!v._g){if(!actx){actx=new (window.AudioContext||window.webkitAudioContext)();dest=actx.createMediaStreamDestination()}v.muted=false;const s=actx.createMediaElementSource(v);v._g=actx.createGain();s.connect(v._g);v._g.connect(actx.destination);v._g.connect(dest)}v._g.gain.value=$('#vs').checked?1:0}
+function vplay(v,lt,on){if(!on){if(!v.paused)v.pause();return}if($('#vs').checked||v._g){try{vsnd(v)}catch(e){}}const d=v.duration||1,want=lt%d;if(S.playing||S.rec){if(v.paused||Math.abs(v.currentTime-want)>.6){v.currentTime=want;v.play().catch(()=>{})}}else{if(!v.paused)v.pause();if(Math.abs(v.currentTime-want)>.05)v.currentTime=want}}
 function photo(x,y,w,h,t){g.save();g.beginPath();g.rect(x,y,w,h);g.clip();const n=S.imgs.length;
  if(!n){g.fillStyle='#1b1b24';g.fillRect(x,y,w,h);g.fillStyle='#8b8fa3';g.textAlign='center';g.font=`600 ${w*.05}px "Hind Siliguri"`;g.fillText('📷 ছবি দিন',x+w/2,y+h/2)}
- else{const seg=DUR/n,i=Math.min(n-1,Math.floor(t/seg)),lt=t-i*seg,X=.7;g.filter=$('#pf').value||'none';if(i>0&&lt<X)dImg(S.imgs[i-1],x,y,w,h,1.1,1);dImg(S.imgs[i],x,y,w,h,1+.1*(i%2?1-lt/seg:lt/seg),i>0?cl(lt/X):1);g.filter='none'}
- const v=g.createRadialGradient(x+w/2,y+h/2,Math.min(w,h)*.35,x+w/2,y+h/2,Math.max(w,h)*.75);v.addColorStop(0,'rgba(0,0,0,0)');v.addColorStop(1,'rgba(0,0,0,.45)');g.fillStyle=v;g.fillRect(x,y,w,h);if($('#gl').checked){g.save();g.globalAlpha=.08;g.fillStyle=g.createPattern(gn,'repeat');g.translate(Math.random()*200|0,Math.random()*200|0);g.fillRect(-200,-200,w+200,h+200);g.restore()}g.restore()}
+ else{const seg=DUR/n,i=Math.min(n-1,Math.floor(t/seg)),lt=t-i*seg,X=.7;S.imgs.forEach((m,k)=>{if(isV(m)){if(k==i)vplay(m,lt,true);else if(!(k==i-1&&lt<X))vplay(m,0,false)}});const cm=S.imgs[i],pm=S.imgs[i-1];g.filter=$('#pf').value||'none';if(i>0&&lt<X)dImg(pm,x,y,w,h,isV(pm)?1:1.1,1);dImg(cm,x,y,w,h,isV(cm)?1:1+.1*(i%2?1-lt/seg:lt/seg),i>0?cl(lt/X):1);g.filter='none'}
+ const v=g.createRadialGradient(x+w/2,y+h/2,Math.min(w,h)*.35,x+w/2,y+h/2,Math.max(w,h)*.75);v.addColorStop(0,'rgba(0,0,0,0)');v.addColorStop(1,'rgba(0,0,0,.45)');g.fillStyle=v;g.fillRect(x,y,w,h);if($('#gl').checked){g.save();g.globalAlpha=.08;g.fillStyle=gp();g.translate(Math.random()*200|0,Math.random()*200|0);g.fillRect(-200,-200,w+200,h+200);g.restore()}g.restore()}
 
 /* frame */
-function draw(t){const L=LY[$('#ly').value],full=L.pos=='full',hasCard=L.pos!='over'&&!full;let ch=hasCard?L.ch*W:0,ph=full?H:L.ph*W;const k=full?1:Math.min(1,H*.96/(ch+ph));ch*=k;ph*=k;const y0=(H-ch-ph)/2;let cy=y0,py=y0;if(L.pos=='top')py=y0+ch;else if(L.pos=='bottom')cy=y0+ph;
+function draw(t){const L=LY[$('#ly').value],full=L.pos=='full',hasCard=L.pos!='over'&&L.pos!='bars'&&!full;let ch=hasCard?L.ch*W:0,ph=full?H:L.ph*W;const k=full?1:Math.min(1,H*.96/(ch+ph));ch*=k;ph*=k;const y0=(H-ch-ph)/2;let cy=y0,py=y0;if(L.pos=='top')py=y0+ch;else if(L.pos=='bottom')cy=y0+ph;
  g.fillStyle='#000';g.fillRect(0,0,W,H);g.textAlign='left';g.globalAlpha=1;photo(0,py,W,ph,t);fx(t,0,py,W,ph);
- const wm=$('#wm').value.trim();if(wm){g.save();g.font=`600 ${W*.032}px "Hind Siliguri"`;g.fillStyle='rgba(255,255,255,.85)';g.shadowColor='rgba(0,0,0,.8)';g.shadowBlur=8;g.textBaseline='alphabetic';g.fillText(wm,W*.04,py+ph-W*.035);g.restore()}
+ const wm=$('#wm').value.trim();if(wm){g.save();const cn=L.fade;g.font=`600 ${W*(cn?.05:.032)}px "Hind Siliguri"`;g.fillStyle=cn?'#fff':'rgba(255,255,255,.85)';g.shadowColor='rgba(0,0,0,.8)';g.shadowBlur=8;g.textBaseline='alphabetic';g.textAlign=cn?'center':'left';g.fillText(wm,cn?W/2:W*.04,cn?py+ph*.9:py+ph-W*.035);g.restore()}
  const col=$('#tc').value,px=W*.09,aS=W*.045,aH=$('#au').value.trim()?W*.1:0;
- if(hasCard){let f=$('#cc').value;if(L.c2&&!cust){f=g.createLinearGradient(0,cy,W*.5,cy+ch);f.addColorStop(0,L.card);f.addColorStop(1,L.c2)}g.fillStyle=f;g.fillRect(0,cy,W,ch);if(L.qm){g.save();g.globalAlpha=.25;g.fillStyle=$('#hc').value;g.font=`700 ${W*.3}px Georgia,serif`;g.textBaseline='alphabetic';g.fillText('\u201C',W*.04,cy+W*.24);g.restore()}if(L.gr){g.save();g.globalAlpha=L.gr;g.fillStyle=g.createPattern(gn,'repeat');g.fillRect(0,cy,W,ch);g.restore()}
+ if(hasCard){let f=$('#cc').value;if(L.c2&&!cust){f=g.createLinearGradient(0,cy,W*.5,cy+ch);f.addColorStop(0,L.card);f.addColorStop(1,L.c2)}g.fillStyle=f;g.fillRect(0,cy,W,ch);if(L.qm){g.save();g.globalAlpha=.25;g.fillStyle=$('#hc').value;g.font=`700 ${W*.3}px Georgia,serif`;g.textBaseline='alphabetic';g.fillText('\u201C',W*.04,cy+W*.24);g.restore()}if(L.gr){g.save();g.globalAlpha=L.gr;g.fillStyle=gp();g.fillRect(0,cy,W,ch);g.restore()}
   const RD=drawText(t,px,cy+ch*.07,W-px*2,ch*.86-aH,L.al,false)||0;drawAuthor(t,px,cy+ch*.93-aH/2,W-px*2,L.sig?'right':L.al,col,aS,L.sig,RD)}
+ else if(L.fade){const gr=g.createLinearGradient(0,py,0,py+ph*.62);gr.addColorStop(0,'#fff');gr.addColorStop(.55,'rgba(255,255,255,.95)');gr.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=gr;g.fillRect(0,py,W,ph*.62);const RD=drawText(t,px,py+ph*.06,W-px*2,ph*.4,'center',false)||0;drawAuthor(t,px,py+ph*.5,W-px*2,'center',col,aS,false,RD)}
+ else if(L.bars){const sg=g.createLinearGradient(0,py+ph*.5,0,py+ph);sg.addColorStop(0,'rgba(0,0,0,0)');sg.addColorStop(1,'rgba(0,0,0,.65)');g.fillStyle=sg;g.fillRect(0,py+ph*.5,W,ph*.5);const bh=H-py-ph;drawText(t,px,py+ph*.58,W-px*2,ph*.36,'center',true);drawText(t,px,py*.12,W-px*2,py*.76,'center',false,'#tt');drawText(t,px,py+ph+bh*.12,W-px*2,bh*.76,'center',false,'#tb')}
  else{const gr=g.createLinearGradient(0,py+ph*.3,0,py+ph);gr.addColorStop(0,'rgba(0,0,0,0)');gr.addColorStop(1,'rgba(0,0,0,.7)');g.fillStyle=gr;g.fillRect(0,py+ph*.3,W,ph*.7);
   const RD=drawText(t,px,py+ph*(full?.25:.42),W-px*2,ph*(full?.5:.42)-aH,'center',true)||0;drawAuthor(t,px,py+ph*(full?.8:.9)-aH/2,W-px*2,'center',col,aS,false,RD)}
  if($('#fo').checked){const a=1-Math.min(cl(t/.4),cl((DUR-t)/.5));if(a>0){g.fillStyle=`rgba(0,0,0,${a})`;g.fillRect(0,0,W,H)}}}
@@ -176,7 +192,7 @@ function draw(t){const L=LY[$('#ly').value],full=L.pos=='full',hasCard=L.pos!='o
 /* player */
 let last=performance.now();
 function tick(now){const dt=Math.min(.1,(now-last)/1000);last=now;
- if(S.playing||S.rec){S.t+=dt;if(S.rec&&S.t>=DUR){S.rec=false;S.t=DUR;recorder.stop()}else if(S.t>=DUR&&!S.rec){S.t=0;sync()}}
+ if(S.rec){S.t=(performance.now()-S.t0)/1000;if(S.t>=DUR){S.rec=false;S.t=DUR;recorder.stop()}}else if(S.playing){S.t+=dt;if(S.t>=DUR){S.t=0;sync()}}
  if(gain)gain.gain.value=(+$('#mv').value/100)*cl((DUR-S.t)/1.5);
  draw(S.t);$('#sk').value=Math.round(S.t/DUR*1000);requestAnimationFrame(tick)}
 requestAnimationFrame(tick);
@@ -184,13 +200,53 @@ function play(v){S.playing=v;$('#pl').textContent=v?'⏸ থামান':'▶ �
 $('#pl').onclick=()=>play(!S.playing);
 $('#sk').oninput=()=>{S.t=$('#sk').value/1000*DUR;if(S.playing)sync()};
 
+/* AI image prompt */
+const STYLE_B90=`STRICT VISUAL REFERENCE — 1990s HEARTBREAK PHOTOGRAPHY
+
+Use the uploaded reference image as the primary visual style reference for every generated image.
+
+Create ultra-photorealistic scenes that look like genuine photographs captured in the 1990s using an actual analog film camera.
+
+Visual requirements:
+
+- Authentic 1990s Bengali/South Asian atmosphere.
+- Pure black and white photography with rich grayscale tones.
+- Real human faces, natural skin texture and realistic body proportions.
+- Emotionally expressive characters with subtle sadness, heartbreak and loneliness.
+- Authentic vintage clothing, traditional architecture and period-appropriate surroundings.
+- Natural lighting, realistic shadows and cinematic composition.
+- Organic 35mm film grain, subtle film imperfections and authentic analog photographic texture.
+- Realistic depth of field and natural camera perspective.
+
+CRITICAL — AVOID AI-GENERATED LOOK:
+
+The image must NOT look like digital AI artwork, CGI, 3D rendering, illustration, painting or artificial studio photography.
+
+Avoid plastic skin, overly smooth faces, artificial facial expressions, excessive sharpening, unrealistic lighting, exaggerated cinematic effects and artificial-looking details.
+
+The final result should resemble a genuine, emotionally powerful, forgotten photograph from 1990s Bangladesh.
+
+Always prioritize photographic realism over artistic beauty.
+
+The scene must be determined by the user's supplied text, while maintaining this exact visual identity.`;
+$('#pc').onclick=async()=>{let ok=false;try{await navigator.clipboard.writeText(STYLE_B90);ok=true}catch(e){const t=document.createElement('textarea');t.value=STYLE_B90;t.style.cssText='position:fixed;top:0;left:0;opacity:0';document.body.appendChild(t);t.select();try{ok=document.execCommand('copy')}catch(e2){}t.remove()}
+ const b=$('#pc');b.textContent=ok?'✔ ফর্ম কপি হয়েছে':'⚠ কপি হয়নি — Chrome-এ খুলুন';setTimeout(()=>b.textContent='📋 ফর্ম কপি করুন',2000)};
 /* export */
-const MT=window.MediaRecorder&&['video/mp4;codecs=avc1.42E01E,mp4a.40.2','video/mp4','video/webm;codecs=vp9,opus','video/webm'].find(m=>MediaRecorder.isTypeSupported(m));
-$('#ex').onclick=async()=>{if(!MT){alert('এই ব্রাউজারে ভিডিও রেকর্ড হয় না — কম্পিউটারে বা ফোনে Chrome ব্যবহার করুন।');return}
- play(false);S.t=0;await document.fonts.ready;const st=cv.captureStream(30);if(S.music){await actx.resume();st.addTrack(dest.stream.getAudioTracks()[0]);sync()}
- const ch=[];recorder=new MediaRecorder(st,{mimeType:MT,videoBitsPerSecond:W>800?10e6:6e6});recorder.ondataavailable=e=>e.data.size&&ch.push(e.data);
- recorder.onstop=()=>{if(au)au.pause();S.rec=false;const b=new Blob(ch,{type:MT.split(';')[0]}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='reel_'+Date.now()+(MT.includes('mp4')?'.mp4':'.webm');a.click();$('#st').textContent='✔ ভিডিও তৈরি হয়েছে ('+(b.size/1e6).toFixed(1)+' MB) — ডাউনলোড না হলে নিচের ভিডিওতে চেপে ধরে সেভ করুন';$('#vp').src=u;$('#vp').style.display='block';$('#ex').disabled=false};
- S.rec=true;$('#ex').disabled=true;recorder.start(250);$('#st').textContent='⏺ রেকর্ড হচ্ছে… ভিডিওর দৈর্ঘ্য পর্যন্ত এই ট্যাবেই থাকুন'};
+const mts={mp4:['video/mp4;codecs=avc1.42E01E,mp4a.40.2','video/mp4'],webm:['video/webm;codecs=vp8,opus','video/webm;codecs=vp9,opus','video/webm']};
+const pick=f=>window.MediaRecorder&&mts[f].find(m=>MediaRecorder.isTypeSupported(m));
+async function exportV(fmt){const f=fmt||$('#fm').value,mt=f=='auto'?(pick('mp4')||pick('webm')):(pick(f)||pick('webm')||pick('mp4'));
+ if(!mt){alert('এই ব্রাউজারে ভিডিও রেকর্ড হয় না — Chrome ব্যবহার করুন।');return}
+ play(false);S.t=0;await document.fonts.ready;const st=cv.captureStream(30);const vsOn=$('#vs').checked&&S.imgs.some(isV);if(vsOn){if(!actx){actx=new (window.AudioContext||window.webkitAudioContext)();dest=actx.createMediaStreamDestination()}S.imgs.filter(isV).forEach(v=>{try{vsnd(v)}catch(e){}})}
+ if(S.music||vsOn){await actx.resume();st.addTrack(dest.stream.getAudioTracks()[0]);if(S.music)sync()}
+ const ch=[];let bad=false;recorder=new MediaRecorder(st,{mimeType:mt,videoBitsPerSecond:W>800?8e6:4e6});
+ recorder.ondataavailable=e=>e.data.size&&ch.push(e.data);recorder.onerror=()=>{bad=true};
+ recorder.onstop=()=>{if(au)au.pause();const early=S.rec||bad;S.rec=false;$('#ex').disabled=false;
+  if(early&&!mt.includes('webm')&&pick('webm')){$('#st').textContent='⚠ MP4 রেকর্ড মাঝপথে থেমে গেছে — নিজে থেকে WebM-এ আবার চেষ্টা হচ্ছে…';exportV('webm');return}
+  const b=new Blob(ch,{type:mt.split(';')[0]}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='reel_'+Date.now()+(mt.includes('mp4')?'.mp4':'.webm');a.click();
+  $('#st').textContent=(early?'⚠ ভিডিও পুরো সময় রেকর্ড হয়নি — কোয়ালিটি HD ৭২০ রেখে আবার চেষ্টা করুন। ':'✔ ভিডিও তৈরি হয়েছে ')+'('+(b.size/1e6).toFixed(1)+' MB, '+mt.split(';')[0].split('/')[1].toUpperCase()+') — ডাউনলোড না হলে নিচের ভিডিওতে চেপে ধরে সেভ করুন';
+  $('#vp').src=u;$('#vp').style.display='block'};
+ S.rec=true;S.t0=performance.now();$('#ex').disabled=true;recorder.start(1000);$('#st').textContent='⏺ রেকর্ড হচ্ছে ('+DUR+' সেকেন্ড)… এই ট্যাব খোলা রাখুন, অন্য অ্যাপে যাবেন না'}
+$('#ex').onclick=()=>exportV();
 </script>
 </body>
 </html>
